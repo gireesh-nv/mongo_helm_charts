@@ -1,0 +1,45 @@
+apiVersion: v1
+entries:
+  enterprise-operator:
+  - apiVersion: v2
+    created: "2025-03-12T20:24:58.521246+05:30"
+    description: MongoDB Kubernetes Enterprise Operator
+    digest: 76495be4cb7735b8464816036724f4104a2e3981a8f4eb11427426661f7f549f
+    home: https://github.com/mongodb/mongodb-enterprise-kubernetes
+    icon: https://mongodb-images-new.s3.eu-west-1.amazonaws.com/leaf-green-dark.png
+    keywords:
+    - mongodb
+    - database
+    - nosql
+    kubeVersion: '>=1.16-0'
+    maintainers:
+    - email: support@mongodb.com
+      name: MongoDB
+    name: enterprise-operator
+    type: application
+    urls:
+    - https://gireesh-nv.github.io/mongo_helm_charts/enterprise-operator-1.32.0.tgz
+    version: 1.32.0
+  ops-manager:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-03-12T20:24:58.521539+05:30"
+    description: A Helm chart for Kubernetes
+    digest: 93f945614646f99eb746d371edadc583ee084e76f280d1d8194be1c2320921b2
+    name: ops-manager
+    type: application
+    urls:
+    - https://gireesh-nv.github.io/mongo_helm_charts/ops-manager-0.1.0.tgz
+    version: 0.1.0
+  replica-set:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-03-12T20:24:58.521824+05:30"
+    description: A Helm chart for Kubernetes
+    digest: a9ba82803f6baa60104b8cca51c27a7350d96a37d9ad0f3b06c3a61a57e4dc42
+    name: replica-set
+    type: application
+    urls:
+    - https://gireesh-nv.github.io/mongo_helm_charts/replica-set-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-03-12T20:24:58.520018+05:30"
