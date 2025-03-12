@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "replica-set.fullname" . }}-test-connection"
+  labels:
+    {{- include "replica-set.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "replica-set.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never
