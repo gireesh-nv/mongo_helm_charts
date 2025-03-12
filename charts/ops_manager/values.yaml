@@ -1,4 +1,4 @@
-# Default values for enterprise_operator.
+# Default values for ops_manager.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 

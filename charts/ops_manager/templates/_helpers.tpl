@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "enterprise_operator.name" -}}
+{{- define "ops_manager.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "enterprise_operator.fullname" -}}
+{{- define "ops_manager.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "enterprise_operator.chart" -}}
+{{- define "ops_manager.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "enterprise_operator.labels" -}}
-helm.sh/chart: {{ include "enterprise_operator.chart" . }}
-{{ include "enterprise_operator.selectorLabels" . }}
+{{- define "ops_manager.labels" -}}
+helm.sh/chart: {{ include "ops_manager.chart" . }}
+{{ include "ops_manager.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,17 +45,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "enterprise_operator.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "enterprise_operator.name" . }}
+{{- define "ops_manager.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "ops_manager.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "enterprise_operator.serviceAccountName" -}}
+{{- define "ops_manager.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "enterprise_operator.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "ops_manager.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}

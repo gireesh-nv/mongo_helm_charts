@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "enterprise_operator.name" -}}
+{{- define "replicaset.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "enterprise_operator.fullname" -}}
+{{- define "replicaset.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "enterprise_operator.chart" -}}
+{{- define "replicaset.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "enterprise_operator.labels" -}}
-helm.sh/chart: {{ include "enterprise_operator.chart" . }}
-{{ include "enterprise_operator.selectorLabels" . }}
+{{- define "replicaset.labels" -}}
+helm.sh/chart: {{ include "replicaset.chart" . }}
+{{ include "replicaset.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,17 +45,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "enterprise_operator.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "enterprise_operator.name" . }}
+{{- define "replicaset.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "replicaset.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "enterprise_operator.serviceAccountName" -}}
+{{- define "replicaset.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "enterprise_operator.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "replicaset.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
